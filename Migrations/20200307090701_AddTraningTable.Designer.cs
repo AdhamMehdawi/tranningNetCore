@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication38.Context;
 
 namespace WebApplication38.Migrations
 {
     [DbContext(typeof(TCenterContext))]
-    partial class TCenterContextModelSnapshot : ModelSnapshot
+    [Migration("20200307090701_AddTraningTable")]
+    partial class AddTraningTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,46 +71,12 @@ namespace WebApplication38.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("WebApplication38.DomainModels.StudentModels.StudentTranning", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsCompleet")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrainingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TrainingId");
-
-                    b.ToTable("StudentTrannings");
-                });
-
             modelBuilder.Entity("WebApplication38.DomainModels.Training", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
@@ -137,33 +105,7 @@ namespace WebApplication38.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
-
                     b.ToTable("Trainings");
-                });
-
-            modelBuilder.Entity("WebApplication38.DomainModels.StudentModels.StudentTranning", b =>
-                {
-                    b.HasOne("WebApplication38.DomainModels.StudentModels.Student", "Student")
-                        .WithMany("Students")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApplication38.DomainModels.Training", "Training")
-                        .WithMany("Students")
-                        .HasForeignKey("TrainingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("WebApplication38.DomainModels.Training", b =>
-                {
-                    b.HasOne("WebApplication38.DomainModels.Courses.Course", "Course")
-                        .WithMany("Trainings")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

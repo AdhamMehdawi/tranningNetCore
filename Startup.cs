@@ -29,6 +29,7 @@ namespace WebApplication38
             services.AddScoped<StudentManager>();
             services.AddDbContext<TCenterContext>(
                 opt=> opt.UseSqlServer(Configuration.GetConnectionString("TCenterConnection"))  );
+            //services.AddDbContext<TestContext>(opt=>opt.UseSqlServer(Configuration.GetConnectionString("TCenterConnection")));
              services.AddMvc();
         }
 

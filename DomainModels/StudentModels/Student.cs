@@ -1,5 +1,6 @@
 ﻿ 
 
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication38.DomainModels.StudentModels
@@ -12,5 +13,7 @@ namespace WebApplication38.DomainModels.StudentModels
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+
+        public List<StudentTranning> Students { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication38.Context;
 
 namespace WebApplication38.Migrations
 {
     [DbContext(typeof(TCenterContext))]
-    partial class TCenterContextModelSnapshot : ModelSnapshot
+    [Migration("20200307092611_CreateStudentTranTable")]
+    partial class CreateStudentTranTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

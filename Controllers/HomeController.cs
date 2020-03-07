@@ -23,7 +23,7 @@ namespace WebApplication38.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public IActionResult Privacy()
         {
             return View();
@@ -33,6 +33,12 @@ namespace WebApplication38.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpDelete]
+        public ActionResult DeleteTest()
+        {
+            return Content("Delete Method ");
         }
     }
 }
